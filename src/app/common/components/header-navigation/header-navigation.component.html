@@ -1,0 +1,13 @@
+<nav class="header_navigation">
+  <ul class="header_navigation_panel">
+    <li *ngFor="let item of headerConfig|async" class="header_navigation_panel_item">
+      <a
+        routerLink="item.route"
+        class="header_navigation_panel_item_link">
+        {{item.text}}
+      </a>
+    </li>
+  </ul>
+</nav>
+
+<button (click)="dispatch()">Dispatch</button>
