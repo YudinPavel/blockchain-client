@@ -1,5 +1,5 @@
-import { HeaderElementModel } from '../../models/HeaderElement.model';
+import { HeaderState } from "./header.state";
 
 export interface AppState {
-  headerConfig: HeaderElementModel[];
+  header: HeaderState;
 }

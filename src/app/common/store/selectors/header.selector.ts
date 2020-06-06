@@ -1,9 +1,6 @@
-import { AppState } from '../state/app.state';
-import { createSelector } from '@ngrx/store';
+import { createSelector } from "@ngrx/store";
+import { AppState } from "../state/app.state";
 
-const selectHeaderConfig = (appState: AppState) => appState.headerConfig;
+const selectHeaderConfig = (appState: AppState) => appState.header;
 
-export const selectHeaderConfigInfo = createSelector(selectHeaderConfig, (state) => {
-  return state
-});
-
+export const selectHeaderConfigInfo = createSelector(selectHeaderConfig, (state) => state.headerConfig);
