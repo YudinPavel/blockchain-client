@@ -153,6 +153,7 @@ export class MainTreeComponent {
         node.children.map(child => addExpandedChildren(child, expanded));
       }
     }
+
     this.dataSource.data.forEach(node => {
       addExpandedChildren(node, this.expandedNodeSet);
     });
@@ -167,7 +168,7 @@ export class MainTreeComponent {
     // console.log('origin/destination', event.previousIndex, event.currentIndex);
 
     // ignore drops outside of the tree
-    if (!event.isPointerOverContainer) return;
+    if (!event.isPointerOverContainer) { return; }
 
     // construct a list of visible nodes, this will match the DOM.
     // the cdkDragDrop event.currentIndex jives with visible nodes.
@@ -179,13 +180,14 @@ export class MainTreeComponent {
 
     // recursive find function to find siblings of node
     function findNodeSiblings(arr: Array<any>, id: string): Array<any> {
-      let result, subResult;
+      let result;
+      let subResult;
       arr.forEach(item => {
         if (item.id === id) {
           result = arr;
         } else if (item.children) {
           subResult = findNodeSiblings(item.children, id);
-          if (subResult) result = subResult;
+          if (subResult) { result = subResult; }
         }
       });
       return result;
@@ -199,7 +201,7 @@ export class MainTreeComponent {
 
     // determine where to insert the node
     const nodeAtDest = visibleNodes[event.currentIndex];
-    if (nodeAtDest.id === nodeToInsert.id) return;
+    if (nodeAtDest.id === nodeToInsert.id) { return; }
 
     // determine drop index relative to destination array
     let relativeIndex = event.currentIndex; // default if no parent
@@ -211,7 +213,7 @@ export class MainTreeComponent {
     }
     // insert node
     const newSiblings = findNodeSiblings(changedData, nodeAtDest.id);
-    if (!newSiblings) return;
+    if (!newSiblings) { return; }
     newSiblings.splice(relativeIndex, 0, nodeToInsert);
 
     // rebuild tree with mutated data
@@ -224,9 +226,11 @@ export class MainTreeComponent {
   dragStart() {
     this.dragging = true;
   }
+
   dragEnd() {
     this.dragging = false;
   }
+
   dragHover(node: FileFlatNode) {
     if (this.dragging) {
       clearTimeout(this.expandTimeout);
@@ -235,6 +239,7 @@ export class MainTreeComponent {
       }, this.expandDelay);
     }
   }
+
   dragHoverEnd() {
     if (this.dragging) {
       clearTimeout(this.expandTimeout);
@@ -283,7 +288,7 @@ export class MainTreeComponent {
   }
 
   private expandNodesById(flatNodes: FileFlatNode[], ids: string[]) {
-    if (!flatNodes || flatNodes.length === 0) return;
+    if (!flatNodes || flatNodes.length === 0) { return; }
     const idSet = new Set(ids);
     return flatNodes.forEach((node) => {
       if (idSet.has(node.id)) {
@@ -312,23 +317,3 @@ export class MainTreeComponent {
     return null;
   }
 }
-
-// import { Component, Input, OnInit } from '@angular/core';
-// import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
-//
-// @Component({
-//   selector: 'app-main-tree',
-//   templateUrl: './main-tree.component.html',
-//   styleUrls: ['./main-tree.component.less']
-// })
-// export class MainTreeComponent implements OnInit {
-//   @Input()
-//   items: any[] = [];
-//
-//   constructor() {
-//   }
-//
-//   ngOnInit() {
-//     console.log(this.items);
-//   }
-// }

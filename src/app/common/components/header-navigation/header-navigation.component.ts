@@ -16,7 +16,7 @@ export class HeaderNavigationComponent implements OnInit {
     select(selectHeaderConfigInfo),
     map((item) => {
       console.log(item);
-      return item;
+      return item.headerConfig;
     })
   )
 
@@ -25,10 +25,6 @@ export class HeaderNavigationComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.store.dispatch(loadHeaderConfig());
-  }
-
-  dispatch() {
     this.store.dispatch(loadHeaderConfig());
   }
 
