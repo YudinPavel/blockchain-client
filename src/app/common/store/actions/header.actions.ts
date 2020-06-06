@@ -1,5 +1,5 @@
-import { createAction, props } from '@ngrx/store';
-import { HeaderElementModel } from '../../models/HeaderElement.model';
+import { createAction, props } from "@ngrx/store";
+import { HeaderElementModel } from "../../models/HeaderElement.model";
 
 export enum headerActions {
   LOAD_HEADER_CONFIG = "[HeaderElement] LOAD_HEADER_CONFIG",
@@ -8,14 +8,14 @@ export enum headerActions {
 }
 
 export const loadHeaderConfig = createAction(
-  headerActions.LOAD_HEADER_CONFIG
+  headerActions.LOAD_HEADER_CONFIG,
 );
 
 export const headerConfigLoadedSuccess = createAction(
   headerActions.HEADER_CONFIG_LOADED_SUCCESS,
-  props<{headerConfig: HeaderElementModel[]}>()
+  props<{headerConfig: HeaderElementModel[]}>(),
 );
 
 export const headerConfigLoadedError = createAction(
-  headerActions.HEADER_CONFIG_LOADED_ERROR
+  headerActions.HEADER_CONFIG_LOADED_ERROR,
 );
