@@ -1,5 +1,5 @@
 <div class="drop-area" appDnd
-     (fileDropped)="onFileDropped($event)"
+     (fileDropped)="onFileUpload($event)"
      (click)="onClickDropArea($event)"
 >
   <div class="text">
@@ -11,5 +11,6 @@
 <input #fileInput
        class="file-input"
        type="file"
-
+       multiple
+       (change)="onFileUpload($event.target.files)"
 />

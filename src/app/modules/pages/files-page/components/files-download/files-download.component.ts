@@ -1,4 +1,6 @@
 import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
+import { Store } from "@ngrx/store";
+import { addingNewFile } from "../../store/files-page.action";
 
 @Component({
   selector: 'app-files-download',
@@ -10,7 +12,7 @@ export class FilesDownloadComponent implements OnInit {
   @ViewChild('fileInput')
   public fileInput: ElementRef;
 
-  constructor() { }
+  constructor(private store: Store) { }
 
   ngOnInit(): void {
   }
@@ -19,8 +21,8 @@ export class FilesDownloadComponent implements OnInit {
     this.fileInput.nativeElement.click();
   }
 
-  onFileDropped($event) {
-
+  onFileUpload(event) {
+    this.store.dispatch(addingNewFile({file: event[event.length - 1]}));
   }
 
 }

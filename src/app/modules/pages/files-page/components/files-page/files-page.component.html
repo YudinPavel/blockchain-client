@@ -2,4 +2,9 @@
   <div class="files-page_files-container">
     <app-files-download></app-files-download>
   </div>
+  <li>
+    <ul *ngFor="let file of files|async">
+      {{file.name}}
+    </ul>
+  </li>
 </div>

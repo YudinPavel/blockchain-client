@@ -13,7 +13,7 @@ export const loadHeaderConfig = createAction(
 
 export const headerConfigLoadedSuccess = createAction(
   headerActions.HEADER_CONFIG_LOADED_SUCCESS,
-  props<{headerConfig: HeaderElementModel[]}>(),
+  props<{ headerConfig: HeaderElementModel[] }>(),
 );
 
 export const headerConfigLoadedError = createAction(
