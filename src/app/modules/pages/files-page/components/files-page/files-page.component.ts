@@ -3,6 +3,7 @@ import { select, Store } from "@ngrx/store";
 import { Observable } from "rxjs";
 import { map } from "rxjs/operators";
 import { selectHeaderConfigInfo } from "../../../../../common/store/selectors/header.selector";
+import { addingNewFile, deleteFile } from "../../store/files-page.action";
 import { selectFilesInfo } from "../../store/files-page.selectors";
 
 @Component({
@@ -15,7 +16,6 @@ export class FilesPageComponent implements OnInit {
   files: Observable<any> = this.store.pipe(
     select(selectFilesInfo),
     map((item) => {
-      console.log(item);
       return item;
     }),
   );
@@ -23,6 +23,10 @@ export class FilesPageComponent implements OnInit {
   constructor(private store: Store) { }
 
   ngOnInit(): void {
+  }
+
+  deleteItem(file) {
+    this.store.dispatch(deleteFile({file: file}));
   }
 
 }

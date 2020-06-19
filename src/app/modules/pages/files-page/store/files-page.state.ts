@@ -1,5 +1,7 @@
+import { MyFileModel } from "../../../../common/models/MyFile.model";
+
 export interface FilesState {
-  files: File[]
+  files: MyFileModel[]
 }
 
 export const initialFilesState: FilesState = {

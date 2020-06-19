@@ -6,6 +6,71 @@
   &_files-container {
     background-color: white;
     padding: 30px 50px;
-  }
 
+    &_files-list {
+
+      list-style: none;
+      margin-top: 25px;
+
+
+      &_file {
+        transition: 0.1s all;
+        border: 2px solid #d6d6d6;
+        padding: 15px 15px;
+        border-radius: 5px;
+        margin-bottom: 20px;
+        display: flex;
+        justify-content: space-between;
+        position: relative;
+
+        &_name {
+          font-size: 20px;
+          font-size: 20px;
+          font-weight: 400;
+
+          .theme {
+            color: #929292;
+            font-weight: 300;
+            padding-top: 5px;
+            font-size: 16px;
+            padding-top: 10px;
+          }
+        }
+
+        .delete-button-box {
+          position: absolute;
+          right: 10px;
+          top: 10px;
+
+          .delete-button {
+            border: none;
+            outline: none;
+            background: none;
+
+            border: 1px solid #d1d1d1;
+            border-color: transparent;
+            border-radius: 10px;
+
+            font-weight: 900;
+            font-size: 15px;
+
+            color: #929292;
+
+            transition: all 0.5s;
+          }
+
+          .delete-button:hover {
+            color: #ff7979;
+            border: 1px solid #d1d1d1;
+            border-radius: 5px;
+          }
+        }
+      }
+
+      &_file:hover {
+        background-color: #fafafa;
+        border-color: #aaaaaa;
+      }
+    }
+  }
 }

@@ -2,8 +2,9 @@ import { Injectable } from "@angular/core";
 import { Actions, Effect, ofType } from "@ngrx/effects";
 import { of } from "rxjs";
 import { catchError, map, mergeMap } from "rxjs/operators";
+import { MyFileModel } from "../../../../common/models/MyFile.model";
 import { ApiService } from "../../../../common/services/api.service";
-import { addingNewFile, filesLoadedError, filesLoadedSuccess, loadFiles } from "./files-page.action";
+import { addingNewFile, filesLoadedError, fileLoadedSuccess, loadFiles, filesLoadedSuccess, deleteFile, errorDeleteFile, successDeleteFile } from "./files-page.action";
 
 @Injectable()
 export class FilesPageEffects {
@@ -23,9 +24,21 @@ export class FilesPageEffects {
     .pipe(
       ofType(addingNewFile),
       mergeMap((action) => this.apiService.addFile(action.file).pipe(
-        map((files: File[]) => (filesLoadedSuccess({files: files}))),
+        map((file: MyFileModel) => (fileLoadedSuccess({file: file}))),
         catchError(() => of(filesLoadedError())),
       )),
+    )
+
+  @Effect()
+  deleteFile$ = this.actions$
+    .pipe(
+      ofType(deleteFile),
+      mergeMap((action) => {
+        return this.apiService.deleteFile(action.file).pipe(
+          map((file: MyFileModel) => (successDeleteFile({file: file}))),
+          catchError(() => of(errorDeleteFile())),
+        )
+      }),
     )
 
   constructor(

@@ -1,10 +1,20 @@
 <div class="page files-page">
   <div class="files-page_files-container">
     <app-files-download></app-files-download>
+    <li class="files-page_files-container_files-list">
+      <ul *ngFor="let file of files|async"
+          class="files-page_files-container_files-list_file"
+      >
+        <div class="files-page_files-container_files-list_file_name">
+          {{file.name}}
+          <div class="theme">
+            Theme: {{file.theme}}
+          </div>
+        </div>
+        <div class="delete-button-box">
+          <button class="delete-button" (click)="deleteItem(file)" >X</button>
+        </div>
+      </ul>
+    </li>
   </div>
-  <li>
-    <ul *ngFor="let file of files|async">
-      {{file.name}}
-    </ul>
-  </li>
 </div>
