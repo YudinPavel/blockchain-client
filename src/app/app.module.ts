@@ -21,12 +21,14 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MainTreeComponent } from './common/components/main-tree/main-tree.component';
 import { DragDropModule } from '@angular/cdk/drag-drop';
+import { PageElementComponent } from './modules/text-page/components/page-element/page-element.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderNavigationComponent,
-    MainTreeComponent
+    MainTreeComponent,
+    PageElementComponent
   ],
   imports: [
     BrowserModule,

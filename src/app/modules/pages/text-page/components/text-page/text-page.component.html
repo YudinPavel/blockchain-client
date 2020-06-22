@@ -1,1 +1,38 @@
-<p>text-page works!</p>
+<app-tree
+  [files]="files$"
+></app-tree>
+
+<div class="texts-page">
+  <div class="texts-page_box" *ngIf="_selectedFile && _selectedFile.content">
+    <li class="texts-box">
+      <ul *ngFor="let page of _selectedFile.content" class="page">
+        <ng-container *ngTemplateOutlet="page_element; context: {estimate: page}"></ng-container>
+      </ul>
+    </li>
+  </div>
+</div>
+
+
+<ng-template let-elements="estimate" #page_element>
+  <li>
+    <ul *ngFor="let element of elements" class="element">
+      <div class="element_box"
+           [ngStyle]="{
+              'text-align': element.text_align,
+              'font-weight': element.font_weight
+              }"
+      >
+        {{element.text}}
+        <div *ngIf="element && element.childs && element.childs.length">
+          <ng-container *ngTemplateOutlet="page_element; context: {estimate: element.childs}"></ng-container>
+        </div>
+      </div>
+    </ul>
+  </li>
+</ng-template>
+
+
+
+
+
+
