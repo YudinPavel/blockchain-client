@@ -158,7 +158,7 @@
     "no-require-imports": true,
     "no-mergeable-namespace": true,
     "quotemark": [
-      true,
+      false,
       "double"
     ],
     "trailing-comma": [

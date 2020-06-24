@@ -17,11 +17,11 @@ export class FilesDownloadComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  onClickDropArea(event) {
+  onClickDropArea(event): void {
     this.fileInput.nativeElement.click();
   }
 
-  onFileUpload(event) {
+  onFileUpload(event): void {
     this.store.dispatch(addingNewFile({file: event[event.length - 1]}));
   }
 
